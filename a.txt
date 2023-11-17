@@ -1,0 +1,59 @@
+import java.applet.*;
+import java.awt.*;
+import java.util.*;
+
+public class Q1 extends Applet
+{
+	int centerX, centerY, dGrid=1, maxX, maxY;
+	
+	void intgr()
+	{
+		Dimension d;
+		d = getSize();
+		maxX = d.width-1;
+		maxY = d.height-1;
+		centerX=maxX/2;
+		centerY = maxY/2;
+		
+	}
+	
+	void drawLine(Graphics g, int x0, int y0, int x1, int y1)
+	{
+		int dx, dy, p, x, y;
+		dx = x1 - x0;
+		dy = y1 - y0;
+		x = x0;
+		y = y0;
+		
+		p = 2*dy - dx;
+		
+		while(x<x1)
+		{
+			if(p>=0)
+			{
+				g.fillOval((int)x, (int)y, 5, 5);
+				y=y+1;
+				p=p+2*dy-2*dx;
+				
+			}
+			else
+			{
+				g.fillOval((int)x, (int)y, 5, 5);
+				p = p + 2 * dy;
+			}
+			x = x + 1;
+
+		}
+	}
+	public void paint(Graphics g)
+	{
+		intgr();
+		drawLine(g, centerX, centerY, centerX+100, centerY);
+		drawLine(g, centerX, centerY+200, centerX+100, centerY+200);
+	}
+	public static void main(String[] args)
+	{
+		
+	}
+}
+/*<applet code="Q1.class" width = "1000" height = "1000"></applet>*/
